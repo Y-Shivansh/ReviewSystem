@@ -12,8 +12,8 @@ export const adminLoginController = async (req,res) => {
         const token = generateToken(admin._id);
         res.cookie('token', token, {
             httpOnly: true,
-            sameSite:"lax",
-            secure: false,
+            sameSite:"Strict",
+            secure: process.env.NODE_ENV === 'production',
             maxAge: 43200000
         })
         res.status(200).json({

@@ -29,7 +29,11 @@ const FeedbackForm = () => {
             alert(response.data.message);
         } catch (error) {
             console.error('Error submitting feedback', error);
+            alert("Error submitting feedback")
             setError('Error submitting feedback');
+        }
+        finally{
+            window.location.reload();
         }
     };
     return (

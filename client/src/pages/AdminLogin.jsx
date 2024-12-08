@@ -15,9 +15,11 @@ const AdminLogin = () => {
             if (response.status === 200) {
                 // Handle successful login
                 console.log('Login successful', response.data);
+                navigate('/admin/dashboard');
             }
         } catch (err) {
             setError('Invalid credentials');
+            navigate('/');
         }
     };
 

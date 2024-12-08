@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import seedAdmin from "../SeedAdmin.js";
+import seedAdmin from "../seedAdmin.js";
 
 const connectDB = async () => {
     try {

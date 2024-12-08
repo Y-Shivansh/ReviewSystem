@@ -5,7 +5,7 @@ import userRoutes from './routes/userRoutes.js'
 import {adminLoginController} from './controllers/loginController.js'
 import adminRoutes from './routes/adminRoutes.js'
 import { verifyAdminToken } from './middlewares/admin.middleware.js';
-import cookieParser from 'cookie-parser';
+import cookieParser  from 'cookie-parser';
 
 const app = express();
 const corsOption = {

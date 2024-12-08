@@ -11,7 +11,7 @@ const AdminLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/admin/login`, { username, password }, { withCredentials: true });
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/admin/login`, { username, password });
             if (response.status === 200) {
                 // Handle successful login
                 console.log('Login successful', response.data);

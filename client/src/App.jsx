@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/add-feedback" element={<FeedbackForm />} />
           <Route path="/all-feedback" element={<AllFeedback />} />
-          <Route path="/AdminLogin" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>

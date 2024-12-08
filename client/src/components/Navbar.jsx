@@ -78,7 +78,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/AdminLogin"
+              to="/admin/login"
               className="text-white hover:text-gray-200 text-sm cursor-pointer no-underline"
             >
               Admin
@@ -128,7 +128,7 @@ const Navbar = () => {
           </li>
           <li className="py-2">
             <Link
-              to="/AdminLogin"
+              to="/admin/login"
               className="block text-headingCol hover:text-secondaryColHover cursor-pointer no-underline"
             >
               Admin

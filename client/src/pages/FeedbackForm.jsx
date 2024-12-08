@@ -25,7 +25,7 @@ const FeedbackForm = () => {
         e.preventDefault();
         setError('');  // Reset the error message
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/v1/feedback`, formData);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/v1/feedback`, formData, {withCredentials: true});
             alert(response.data.message);
         } catch (error) {
             console.error('Error submitting feedback', error);

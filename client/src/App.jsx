@@ -14,7 +14,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-
         <ToastContainer />
         <Routes>
           <Route path="/" element={<LandingPage />} />

@@ -15,6 +15,7 @@ const AdminLogin = () => {
             if (response.status === 200) {
                 // Handle successful login
                 console.log('Login successful', response.data);
+                alert("login successful");
                 navigate('/admin/dashboard');
             }
         } catch (err) {

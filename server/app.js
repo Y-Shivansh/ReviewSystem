@@ -9,7 +9,7 @@ import cookieParser  from 'cookie-parser';
 
 const app = express();
 const corsOption = {
-    origin: "https://review-system24x7.vercel.app",
+    origin: "https://review-system24x7.vercel.app/api",
     credentials: true
 }
 app.use(express.json());

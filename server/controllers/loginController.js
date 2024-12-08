@@ -10,6 +10,7 @@ export const adminLoginController = async (req, res) => {
         const isMatch = bcrypt.compare(password, admin.password);
         if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
         const token = generateToken(admin._id);
+        console.log("token before cookies: ", token);
         res.cookie('token', token, {
             httpOnly: false,
             secure: true,
@@ -17,12 +18,12 @@ export const adminLoginController = async (req, res) => {
             maxAge: 43200000 
         });
         console.log("cookies: ", req.cookies);  
-        console.log("cookies token: ", req.cookies.token);  
+        console.log("token in cookies: ", req.cookies.token);  
         res.status(200).json({
             message: "Login successful",
             user: {
                 id: admin._id,
-                name: admin.name,
+                username: admin.username,
             }
         })
 

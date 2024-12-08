@@ -23,7 +23,7 @@ app.use('/api/v1', userRoutes);
 
 // Admin Routes
 app.post('/api/admin/login', adminLoginController)
-app.use(verifyAdminToken);
+// app.use(verifyAdminToken);
 app.use('/api/admin', adminRoutes)
 
 export default app

@@ -9,7 +9,6 @@ export const getAllFeedback = async (req, res) => {
     } catch (error) {
         console.error("error loading feedbacks", error);
         res.status(500).json({ message: "Error Loading Feedbacks", error })
-
     }
 }
 

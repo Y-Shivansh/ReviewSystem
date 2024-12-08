@@ -11,7 +11,7 @@ export const adminLoginController = async (req, res) => {
         if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
         const token = generateToken(admin._id);
         res.cookie('token', token, {
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: 'lax',
             maxAge: 43200000 

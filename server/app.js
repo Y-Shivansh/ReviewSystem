@@ -8,15 +8,15 @@ import { verifyAdminToken } from './middlewares/admin.middleware.js';
 import cookieParser from 'cookie-parser';
 
 const app = express();
-const corsOption = {
-    origin: 'https://review-system24x7.vercel.app',
-    credentials: true
-}
+// const corsOption = {
+//     origin: ,
+//     credentials: true
+// }
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser())
-app.use(cors(corsOption));
+app.use(cors());
 
 // User Routes
 app.use('/api/v1', userRoutes);

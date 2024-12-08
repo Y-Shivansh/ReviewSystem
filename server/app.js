@@ -15,8 +15,8 @@ const corsOption = {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
-app.use(cookieParser())
-app.use(cors(corsOption));
+app.use(cookieParser());
+app.use('*',cors(corsOption));
 // User Routes
 app.use('/api/v1', userRoutes);
 

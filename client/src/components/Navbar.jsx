@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import axios from "axios";
+import rateLogo from "../assets/RateLogo.jpg";
 
 
 const Navbar = () => {
@@ -13,7 +14,8 @@ const Navbar = () => {
     <nav className="bg-gray-800 p-1 text-heading static w-full top-0 z-10">
       <div className="px-3 py-1 flex justify-between items-center">
         {/* Logo Section */}
-        <div className="text-xl font-semibold">
+        <div className=" flex space-x-2 items-center text-xl font-semibold">
+          <img className="w-8 rounded-lg" src={rateLogo} alt="" />
           <Link
             to="/"
             className="text-white hover:text-gray-200 no-underline"

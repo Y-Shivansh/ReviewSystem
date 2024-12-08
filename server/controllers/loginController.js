@@ -13,7 +13,7 @@ export const adminLoginController = async (req, res) => {
         console.log("token before cookies: ", token);
         res.cookie('token', token, {
             httpOnly: false,
-            secure: true,
+            secure: process.env.NODE_ENV,
             sameSite: 'lax',
             maxAge: 43200000 
         });

@@ -6,7 +6,8 @@ import {adminLoginController} from './controllers/loginController.js'
 import adminRoutes from './routes/adminRoutes.js'
 import { verifyAdminToken } from './middlewares/admin.middleware.js';
 import cookieParser  from 'cookie-parser';
-
+import dotenv from 'dotenv'
+dotenv.config();
 const app = express();
 const corsOption = {
     origin: ["https://review-system24x7.vercel.app", "http://localhost:5173"] ,

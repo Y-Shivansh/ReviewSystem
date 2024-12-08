@@ -11,16 +11,15 @@ const AdminLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/admin/login`, { username, password }, {withCredentials: true});
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/admin/login`, { username, password });
             if (response.status === 200) {
-                // Handle successful login
+                // Store the token in localStorage
+                localStorage.setItem('token', response.data.token);
                 console.log('Login successful', response.data);
-                alert("login successful");
                 navigate('/admin/dashboard');
             }
         } catch (err) {
             setError('Invalid credentials');
-            navigate('/');
         }
     };
 
@@ -52,7 +51,6 @@ const AdminLogin = () => {
                     {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
                     <button
                         type="submit"
-                        onClick={()=>navigate('/admin/dashboard')}
                         className="w-full bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
                     >
                         Login

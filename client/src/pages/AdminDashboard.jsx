@@ -11,7 +11,12 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchAverageRating = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/average-rating`, {withCredentials: true});
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/average-rating`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
                 setAverageRating(response.data.averageRating);
             } catch (err) {
                 setError('Error fetching average rating');
@@ -20,7 +25,12 @@ const AdminDashboard = () => {
 
         const fetchFeedbacks = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/all-feedback`, {withCredentials: true});
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/all-feedback`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
                 setFeedbacks(response.data.allFeedbacks);
             } catch (err) {
                 setError('Error fetching feedbacks');
@@ -35,7 +45,12 @@ const AdminDashboard = () => {
 
     const handleAction = async (id, action) => {
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/admin/feedback/${id}/manpulate`, { action }, { withCredentials: true });
+            const token = localStorage.getItem('token');
+            await axios.post(`${import.meta.env.VITE_API_URL}/admin/feedback/${id}/manpulate`, { action }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             setFeedbacks(feedbacks.filter(feedback => feedback._id !== id));
             window.location.reload();
         } catch (err) {
@@ -57,21 +72,25 @@ const AdminDashboard = () => {
     return (
         <div>
             <Navbar />
-            <div className="container mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
-                <h1 className="text-3xl font-semibold text-center text-gray-800 mb-10">Admin Dashboard</h1>
-                <div className="text-center mb-10">
-                    <h2 className="text-2xl font-semibold text-gray-700">Average Rating: {averageRating}</h2>
+            <div className="container mx-auto p-4">
+                <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+                <div className="mb-4">
+                    <h2 className="text-xl font-semibold">Average Rating</h2>
+                    {averageRating !== null ? (
+                        <p>{averageRating}</p>
+                    ) : (
+                        <p>No ratings available</p>
+                    )}
                 </div>
                 <div>
-                    <h2 className="text-2xl font-semibold text-gray-700 mb-6">All Feedbacks</h2>
+                    <h2 className="text-xl font-semibold">Feedbacks</h2>
                     {feedbacks.length === 0 ? (
-                        <p className="text-center text-lg text-gray-600">No Feedbacks Available!</p>
+                        <p>No feedbacks available</p>
                     ) : (
-                        <ul className="space-y-6">
+                        <ul>
                             {sortedFeedbacks.map(feedback => (
-                                <li key={feedback._id} className="border p-4 rounded-lg shadow-md hover:bg-gray-100">
-                                    <h3 className="text-xl font-semibold text-gray-900">{feedback.name}</h3>
-                                    <p className="text-lg text-yellow-500">Rating: {feedback.rating}</p>
+                                <li key={feedback._id} className="mb-4 p-4 border rounded">
+                                    <p className="font-semibold">{feedback.name}</p>
                                     <p className="text-gray-700 mt-2">{feedback.review}</p>
                                     <div className="mt-4 flex space-x-4">
                                         {/* Approve button is disabled if feedback is approved */}

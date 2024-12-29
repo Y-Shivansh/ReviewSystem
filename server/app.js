@@ -17,7 +17,7 @@ const corsOption = {
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors(corsOption));
-app.get('/api/health', (req, res) => {
+app.get('/health', (req, res) => {
     res.status(200).json({ status: 'UP' });
   });
 

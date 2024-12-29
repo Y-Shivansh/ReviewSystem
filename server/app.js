@@ -13,14 +13,16 @@ const corsOption = {
     origin: ["https://review-system24x7.vercel.app", "http://localhost:5173"],
     credentials: true
 };
-app.use(express.json());
+    app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors(corsOption));
 
 // User Routes
 app.use('/api/v1', userRoutes);
-
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'UP' });
+  });
 // Admin Routes
 app.post('/api/admin/login', adminLoginController);
 app.use(verifyAdminToken);
